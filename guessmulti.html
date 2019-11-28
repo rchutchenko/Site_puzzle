@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Личный сайт студента GeekBrains</title>
+	<link rel="stylesheet" href="style.css"> 
+	<script type="text/javascript">
+
+		var answer = parseInt(Math.random() * 100);
+		var tryCount1 = 0;
+		var tryCount2 = 0;
+		var maxTryCount = 5;
+		var player1 = 0;
+		var player2 = 0;
+		
+		function readInt(){
+			var number = document.getElementById("userAnswer").value;
+			return parseInt(number);
+			// return +document.getElementById("userAnswer").value;
+		}
+
+		function write(text){
+			document.getElementById("info").innerHTML = text;
+			document.getElementById("userAnswer").value = "";
+		};
+
+		function hide(id){
+			document.getElementById(id).style.display = "none";
+		};
+
+		function moveCount (player){
+			if (player == player1)
+				return maxTryCount - tryCount2;
+			else return maxTryCount - tryCount1;
+		};
+
+		function guessmulti(){
+								
+			if (player2 == 0) {
+				if (player1 == 0) {
+					player1 = document.getElementById("userAnswer").value;
+					write("Введите имя <b>второго</b> игрока");
+				} else {
+					player2 = document.getElementById("userAnswer").value;
+					write("<b>" + player1 + "</b>, угадайте число от 0 до 100. <br>У Вас осталось " + (maxTryCount - tryCount1) + " попыток(ки, ка)");
+					};
+			} else {
+				if (tryCount1 <= tryCount2) {
+					tryCount1++;
+					guess(player1, tryCount1);
+				} else {
+					tryCount2++;
+					guess(player2, tryCount2);
+					};
+				};
+		};
+				
+		function guess(player, tryCount){
+			var userAnswer = readInt();
+			if (player == player1) {
+				var nextplayer = player2
+			} else nextplayer = player1;
+
+			if(userAnswer == answer){
+				write("<b>Поздравляю, вы угадали!</b><br>Победил игрок<b> " + player + "</b>");
+				hide("button");
+				hide("userAnswer");
+			} else if(tryCount2 >= maxTryCount){
+				write("<b>Попытки закончились!<br> Победителя нет!<br>Правильный ответ: " + answer + "</b>");
+				hide("button");
+				hide("userAnswer");
+			} else if(userAnswer > answer){
+				write("Вы ввели слишком <b>большое</b> число!<b><br>" + nextplayer + "</b>,  введите число от 1 до 100<br>У Вас осталось " + moveCount(player) + " попыток(ки, ка)");
+			} else if(userAnswer < answer){
+				write("Вы ввели слишком <b>маленькое</b> число!<b><br>" + nextplayer + "</b>, введите число от 1 до 100<br>У Вас осталось " + moveCount(player) + " попыток(ки, ка)");
+			};
+		};
+	
+	</script>
+</head>
+<body>
+
+<div class="content">
+	<div class="header">
+		<a href="index.html">Главная</a>
+		<a href="puzzle.html">Загадки</a>
+		<a href="guess.html">Угадайка</a>
+		<a href="guessmulti.html">Угадайка мультиплеер</a>
+		<a href="password.html">Генератор паролей</a>
+	</div>
+
+<div class="contentWrap">
+    <div class="content">
+        <div class="center">
+
+			<h1>Игра угадайка мультиплеер</h1>
+
+			<div class="box">
+				<p id="info">Введите имя <b>первого</b> игрока</p>
+				<input type="text" id="userAnswer">
+				<br>
+				<a href="#" onClick="guessmulti();" id="button">ОК</a>
+        </div>
+    </div>
+</div>
+
+	
+
+</div>
+<div class="footer">
+	Copyright &copy; Rch
+<div>
+
+
+</body>
+</html>

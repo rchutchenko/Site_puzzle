@@ -15,19 +15,27 @@
 				if(userAnswer == answers[i]){
 					score++;
 					break;
-				}
-			}
-		}
+				};
+			};
+		};
 		
 		function checkAnswers() {
 
-			checkAnswer("userAnswer1", ["сон", "сноведение"]);
-			checkAnswer("userAnswer2", ["морской", "укус акулы"]);
-			checkAnswer("userAnswer3", ["шахматный", "мертвый"]);
+			checkAnswer("userAnswer1", ["арбуз"]);
+			checkAnswer("userAnswer2", ["морковь", "морковка"]);
+			checkAnswer("userAnswer3", ["земляника"]);
+			checkAnswer("userAnswer4", ["помидор", "помидоры"]);
 
 			alert("Вы отгадали " + score + " загадок");
 
-		}
+			document.getElementById('userAnswer1').value = "";
+			document.getElementById('userAnswer2').value = "";
+			document.getElementById('userAnswer3').value = "";
+			document.getElementById('userAnswer4').value = "";
+
+			score = 0;
+		};
+
 
 	</script>
 </head>
@@ -36,9 +44,11 @@
 <div class="content">
 	<div class="header">
 		<a href="index.html">Главная</a>
-		<a href="#">Загадки</a>
+		<a href="puzzle.html">Загадки</a>
 		<a href="guess.html">Угадайка</a>
-	</div>
+		<a href="guessmulti.html">Угадайка мультиплеер</a>
+		<a href="password.html">Генератор паролей</a>
+		</div>
 
 <div class="contentWrap">
     <div class="content">
@@ -48,14 +58,17 @@
 
 			<div class="box">
 
-				<p>Что можно увидеть с закрытыми глазами?</p>
+				<p>Сам алый, сахарный, кафтан зеленый, бархатный.</p>
 				<input type="text" id="userAnswer1">
 
-				<p>Какой болезнью никто не болеет на суше?</p>
+				<p>Красна девица, сидит в темнице, а коса на улице.</p>
 				<input type="text" id="userAnswer2">
 
-				<p>Какой конь не ест овса?</p>
+				<p>Я капелька лета на тоненькой ножке, плетут для меня кузовки и лукошки, кто любит меня, тот и рад поклониться,а имя дала мне родная землица.</p>
 				<input type="text" id="userAnswer3">
+				
+				<p>Как на нашей грядке, выросли загадки, сочные да крупные, вот такие круглые, летом зеленеют, к осени краснеют.</p>
+				<input type="text" id="userAnswer4">
 
 				<br>
 				<a href="#" onClick="checkAnswers();">Ответить</a>
@@ -70,7 +83,7 @@
 
 </div>
 <div class="footer">
-	Copyright &copy; Vasily Pupkin
+	Copyright &copy; Rch
 <div>
 
 
